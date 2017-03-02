@@ -8,6 +8,13 @@ class Bullet(Sprite):
 		self.screen = screen;
 		self.image = pygame.image.load('images/shuriken4.png');
 		self.image = pygame.transform.scale(self.image, (50, 100));
+		self.bullet_level = bullet_level
+		if self.bullet_level == 2 or self.bullet_level == 3:
+		# if self.bullet_level >= 2:
+			self.image = pygame.image.load('images/shuriken1.png');
+		if self.bullet_level == 4:
+			self.image = pygame.image.load('images/fireball.png');			
+			self.image = pygame.transform.scale(self.image, (80, 130));
 		# create a bullet from scratch
 		# if bullet_type == 'vertical':
 			# self.rect = pygame.Rect(0,0, game_settings.bullet_width, game_settings.bullet_height);
@@ -26,8 +33,8 @@ class Bullet(Sprite):
 		self.speed = game_settings.bullet_speed;
 		self.x = self.rect.x;
 		self.y = self.rect.y;
+		self.hero = hero
 		# self.direction = direction
-
 	def update_bullet(self):
 		# change the x and y accordingly based on self.speed
 		# if self.direction == 'up':
@@ -43,8 +50,15 @@ class Bullet(Sprite):
 		# 	self.x = 700
 		# else:
 		self.y -= self.speed;
+		if self.bullet_level == 2: self.x += 1
+		if self.bullet_level == 3: self.x -= 1	
+		# if self.bullet_level == 4: self.xc += 2
+		if self.bullet_level == 5: self.x -= 2
 		self.rect.y = self.y;
 		self.rect.x = self.x;
+		if self.y <= 0:
+			self.remove()
+
 	def draw_bullet(self):
 		# draw rect takes 3 arg, what entity, what color, and where
 		# pygame.draw.rect(self.screen, self.color, self.rect)

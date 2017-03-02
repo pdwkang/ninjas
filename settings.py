@@ -8,6 +8,8 @@ class Settings():
 		self.bullet_color = (0,0,0);
 		self.bullet_speed = 10;
 		self.game_active = False;
-		self.hero_speed = 12;
+		self.hero_speed = 10;
 		self.timer = 0;
 		self.real_timer = 0;
+		self.game_active = True;
+		self.ninjas_killed = 0;

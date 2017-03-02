@@ -15,7 +15,7 @@ class Hero(Sprite):
 		# give our hero an image property!
 		self.image = pygame.image.load(image)
 
-		self.image = pygame.transform.scale(self.image, (100, 100));
+		self.image = pygame.transform.scale(self.image, (80, 80));
 		# ..rect stuff
 		# rect is available on all pygame entities. Its like x and y in canvas
 		self.rect = self.image.get_rect()
